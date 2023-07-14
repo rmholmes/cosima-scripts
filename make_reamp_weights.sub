@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -N REMAP
+#PBS -P au06
+#PBS -l ncpus=16
+#PBS -l mem=8GB
+#PBS -l walltime=00:10:00
+#PBS -l wd
+#PBS -l storage=gdata/e14+gdata/ik11+gdata/hh5
+#PBS -q normal
+
+module purge
+module load openmpi
+module load nco
+module load esmf/7.1.0r-intel
+module use /g/data/hh5/public/modules
+module load conda/analysis3
+module load netcdf
+
+../../tools/make_remap_weights.py ./ /g/data/ik11/inputs/JRA-55/RYF/v1-3/ /g/data/ik11/inputs/access-om2/input_236a3011/yatm_1deg/ --atm JRA55 --ocean MOM1 --npes 16
+
