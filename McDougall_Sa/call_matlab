@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N Sa_matlab
+#PBS -P dx2
+#PBS -l ncpus=1
+#PBS -l mem=12GB
+#PBS -l walltime=04:00:00
+#PBS -l wd
+#PBS -l software=matlab_unsw
+#PBS -l storage=gdata/hh5+gdata/e14
+#PBS -q express
+#PBS -M ryan.holmes@bom.gov.au
+#PBS -m e
+
+module load matlab
+module load matlab_licence/unsw
+
+matlab -nodisplay -nodesktop -nosplash -r "Compute_PSH;exit;"
